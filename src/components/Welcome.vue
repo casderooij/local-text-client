@@ -1,14 +1,10 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <p>virtual graffiti...</p>
 
-    <a href="/#/login">To login</a>
+    <a href="/#/login">login</a>
+    <a href="/#/register">register</a>
 
-    <ul>
-      <li v-for="order in orders">
-        {{ order.title }}
-      </li>
-    </ul>
   </div>
 </template>
 
@@ -16,10 +12,9 @@
 import axios from 'axios'
 
 export default {
-  name: 'HelloWorld',
+  name: 'Welcome',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
       orders: '',
       errors: []
     }
