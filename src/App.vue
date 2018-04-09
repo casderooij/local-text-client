@@ -14,16 +14,16 @@ export default {
 </script>
 
 <style>
-#app {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #3B3B3B;
-  margin-top: 60px;
-}
+  #app {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    color: #3B3B3B;
+    margin-top: 50px;
+  }
 
-body {
-  background-color: #FFF9E7;
-  font-family: 'Times New Roman', Times, serif;
-}
+  body {
+    background-color: #FFF;
+    font-family: 'Times New Roman', Times, serif;
+  }
 </style>

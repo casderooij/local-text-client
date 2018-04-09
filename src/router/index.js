@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+import axios from 'axios'
+
 import Welcome from '@/components/Welcome'
 import Login from '@/components/Login'
 
@@ -28,10 +30,7 @@ router.beforeEach((to, from, next) => {
   if(to.matched.some(record => record.meta.requiresAuth)) {
     if(!localStorage.getItem('token')) {
       next({
-        path: '/login',
-        query: {
-          redirect: to.fullPath,
-        },
+        path: '/login'
       });
     } else {
       next();

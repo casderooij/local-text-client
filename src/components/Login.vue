@@ -3,14 +3,13 @@
       <a href="/#/">To Homepage</a>
       <br><br>
       {{ msg }}
-      <input v-model="login" type="text" name="login">
-      <input v-model="password" type="text" name="password">
+      <input v-model="username" type="text" name="username">
+      <input v-model="password" type="password" name="password">
       <button id="login-button" v-on:click="doLogin()">LOGIN</button>
 
       _________ <br>
       <br>
 
-      <button v-on:click="doLogout()">LOGOUT!!</button>
   </div>
 </template>
 
@@ -22,7 +21,7 @@ export default {
     data () {
         return {
             msg: 'Welcome to Your Vue.js App',
-            login: '',
+            username: '',
             password: '',
             errors: []
         }
@@ -33,21 +32,17 @@ export default {
         method: 'post',
         url: 'http://localhost:3000/login',
         data: {
-          login: this.$data.login,
+          username: this.$data.username,
           password: this.$data.password
         }
       })
       .then(res => {
         this.$data.msg = res.data
-        localStorage.setItem('token', res.data.data.token)
+        localStorage.setItem('token', JSON.stringify(res.data.data.token))
       })
       .catch(err => {
         this.$data.errors.push(err)
       })
-    },
-
-    doLogout: function() {
-        localStorage.removeItem('token')
     }
   }
 }
