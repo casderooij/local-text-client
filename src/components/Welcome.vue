@@ -2,7 +2,13 @@
   <div class="hello">
     <p>virtual graffiti...</p>
 
-    <!-- {{ text.latitude }}, {{ text.longitude }} -->
+    <p v-if="!textFound">... looking for text ...</p>
+
+    <p v-if="text">
+      {{ text[0].title }}
+      <br>
+      <small>{{ Math.floor(text[0].distance * 1000) }} meters away</small>
+    </p>
 
     <div v-if="!login" class="loginAndRegisterButtons">
       <a href="/#/login">login</a>
@@ -15,39 +21,49 @@
 
     <br><br>
 
-    <!-- {{ d }} -->
-
   </div>
 </template>
 
 <script>
+import authMixin from '../assets/js/mixins/authMixin'
 import axios from 'axios'
-import calculateDistanceOfText from '../assets/js/methods/calculateDistanceOfText'
 
 export default {
   name: 'Welcome',
+  mixins: [authMixin],
   data () {
     return {
       text: '',
+      textFound: false,
       errors: [],
-      d: '',
       user: '',
       login: false
     }
   },
   created() {
-    axios({
-      method: 'get',
-      url: 'http://localhost:3000/texts'
-    })
-    .then(response => {
-      this.text = response.data[1]
-      // this.d = calculateDistanceOfText(response.data[1].latitude, response.data[1].longitude);
-      // calculateDistanceOfText(response.data[1].latitude, response.data[1].longitude);
-    })
-    .catch(e => {
-      this.errors.push(e)
-    })
+    if('geolocation' in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+
+        axios({
+          method: 'get',
+          url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
+        })
+        .then(response => {
+          this.text = response.data;
+          this.textFound = true;
+        })
+        .catch(e => {
+          this.errors.push(e)
+        })
+      });
+
+      
+    } else {
+      console.log('Geolocation not available...');
+    }
+    
 
 
     if(localStorage.getItem('token')) {

@@ -4,6 +4,7 @@ import axios from 'axios'
 
 import Welcome from '@/components/Welcome'
 import Login from '@/components/Login'
+import Logout from '@/components/Logout'
 
 Vue.use(Router)
 
@@ -21,6 +22,14 @@ const router = new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/logout',
+      name: 'Logout',
+      component: Logout,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
