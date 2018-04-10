@@ -9,7 +9,6 @@
 <script>
 import checkToken from '../assets/js/mixins/checkToken'
 import axios from 'axios'
-import router from '../router'
 
 export default {
     name: 'Logout',
@@ -23,7 +22,6 @@ export default {
       doLogout: function() {
         localStorage.removeItem('token');
         this.hasToken = false;
-        router.push({name:'Welcome'});
     }
   }
 }
