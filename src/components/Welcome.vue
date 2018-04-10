@@ -16,10 +16,8 @@
     </div>
 
     <div v-if="login" class="logoutButton">
-      <button v-on:click="doLogout()">LOGOUT!!</button>
+      <router-link :to="{name: 'User'}">User</router-link>
     </div>
-
-    <br><br>
 
   </div>
 </template>
@@ -86,11 +84,7 @@ export default {
     }
   },
   methods: {
-    doLogout: function() {
-      localStorage.removeItem('token');
-      this.login = false;
-      this.user = '';
-    }
+    
   }
 }
 </script>

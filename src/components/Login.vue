@@ -18,12 +18,10 @@
 
 <script>
 import router from '../router'
-import authMixin from '../assets/js/mixins/authMixin'
 import axios from 'axios'
 
 export default {
   name: 'Login',
-  mixins: [authMixin],
   data() {
     return {
       username: '',
