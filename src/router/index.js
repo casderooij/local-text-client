@@ -4,11 +4,13 @@ import axios from 'axios'
 
 import Welcome from '@/components/Welcome'
 import User from '@/components/User'
+import Register from '@/components/Register'
 import Login from '@/components/Login'
 
 Vue.use(Router)
 
 const router = new Router({
+  mode: 'history',
   routes: [
     {
       path: '/',
@@ -22,6 +24,11 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
+    },
+    {
+      path: '/register',
+      name: 'Register',
+      component: Register
     },
     {
       path: '/login',

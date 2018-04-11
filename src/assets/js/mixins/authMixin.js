@@ -1,3 +1,4 @@
+import router from '../../../router';
 import axios from 'axios';
 
 export default {
@@ -29,6 +30,10 @@ export default {
             })
             .catch(err => {
                 console.log(err);
+                if(err.status = 401) {
+                    localStorage.removeItem('token');
+                    router.push({name: 'Welcome'});
+                }
             });
         }
             

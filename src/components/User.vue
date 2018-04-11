@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a href="/#/">To Homepage</a>
+    <a href="/">To Homepage</a>
     <br><br>
     <h4>{{ currentUser.username }}</h4>
     <br><br>

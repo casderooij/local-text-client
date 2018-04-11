@@ -11,8 +11,8 @@
     </p>
 
     <div v-if="!login" class="loginAndRegisterButtons">
-      <a href="/#/login">login</a>
-      <a href="/#/">register</a>
+      <router-link :to="{name: 'Login'}">login</router-link>
+      <router-link :to="{name: 'Register'}">register</router-link>
     </div>
 
     <div v-if="login" class="logoutButton">

@@ -1,6 +1,6 @@
 <template>
   <div>
-      <a href="/#/">To Homepage</a>
+      <a href="/">To Homepage</a>
       <br><br>
       <h4>Login</h4>
       <br><br>
@@ -11,7 +11,7 @@
       <form v-on:submit.prevent="doLogin">
         <input v-model="username" type="text" name="username">
         <input v-model="password" type="password" name="password">
-        <button id="login-button">LOGIN</button>
+        <button id="login-button">login</button>
       </form>
   </div>
 </template>
