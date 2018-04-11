@@ -40,10 +40,22 @@ export default {
   },
   created() {
     if('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        let lat = position.coords.latitude;
-        let lon = position.coords.longitude;
+      let position;
 
+      let success = (p) => {
+        position = p;
+        queryPosition(position.coords.latitude, position.coords.longitude);
+        console.log(p);
+
+        console.log('test');
+        navigator.geolocation.getCurrentPosition(success, error);
+      }
+
+      let error = (msg) => {
+        console.error(msg);
+      }
+
+      let queryPosition = (lat, lon) => {
         axios({
           method: 'get',
           url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
@@ -55,9 +67,10 @@ export default {
         .catch(e => {
           this.errors.push(e)
         })
-      });
+      }
 
-      
+      navigator.geolocation.getCurrentPosition(success, error);
+
     } else {
       console.log('Geolocation not available...');
     }
@@ -82,17 +95,11 @@ export default {
         this.login = true;
       }
     }
-  },
-  methods: {
-    
+
+
   }
 }
 </script>
 
 <style scoped>
-
-li {
-  list-style: none;
-}
-
 </style>

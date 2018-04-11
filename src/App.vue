@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="logo">
-      <img src="./assets/logo.svg" alt="">
+      <img src="./assets/img/logo.svg" alt="">
     </div>
     <router-view/>
   </div>
@@ -14,6 +14,8 @@ export default {
 </script>
 
 <style>
+  @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+
   #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -23,7 +25,6 @@ export default {
   }
 
   body {
-    background-color: #FFF;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: 'IBM Plex Sans', sans-serif;
   }
 </style>
