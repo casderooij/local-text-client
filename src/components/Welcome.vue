@@ -58,7 +58,8 @@ export default {
       let queryPosition = (lat, lon) => {
         axios({
           method: 'get',
-          url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
+          // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
+          url: `http://199.247.11.116/server/nearest-texts/${lat}/${lon}`
         })
         .then(response => {
           this.text = response.data;
@@ -81,7 +82,8 @@ export default {
       var token = JSON.parse(localStorage.getItem('token'));
       axios({
         method: 'get',
-        url: 'http://localhost:3000/users/' + token.userId,
+        // url: 'http://localhost:3000/users/' + token.userId,
+        url: 'http://199.247.11.116/server/users/' + token.userId,
         headers: {'token': token.userToken}
       })
       .then(response => {

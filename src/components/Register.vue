@@ -44,7 +44,8 @@ export default {
 
       axios({
         method: 'post',
-        url: `http://localhost:3000/register`,
+        // url: `http://localhost:3000/register`,
+        url: `http://199.247.11.116/server/register`,
         data: {
           username: this.username,
           password: this.password
@@ -54,7 +55,8 @@ export default {
 
         axios({
           method: 'post',
-          url: `http://localhost:3000/login`,
+          // url: `http://localhost:3000/login`,
+          url: `http://199.247.11.116/server/login`,
           data: {
             username: this.username,
             password: this.password
