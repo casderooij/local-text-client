@@ -1,6 +1,6 @@
 <template>
   <div>
-      <a href="/">To Homepage</a>
+      <router-link :to="{name: 'Welcome'}">To Homepage</router-link>
       <br><br>
       <h4>Register</h4>
       <br><br>
