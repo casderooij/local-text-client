@@ -3,17 +3,20 @@
     <div class="welcome-container">
       <div class="logo-container">
         <img src="../assets/img/logo.svg" alt="">
+        <p class="logo-container__sub-title">virtual graffiti...</p>
       </div>
 
-      <p>virtual graffiti...</p>
+      <div class="nearest-text-container">
+        <p v-if="!textFound">... looking for text ...</p>
 
-      <p v-if="!textFound">... looking for text ...</p>
-
-      <p v-if="text">
-        {{ text[0].title }}
-        <br>
-        <small>{{ Math.floor(text[0].distance * 1000) }} meters away</small>
-      </p>
+        <p v-if="text">
+          <div v-for="t in text">
+            <p>{{ t.title }}</p>
+            <br>
+            <small>{{ Math.floor(t.distance * 1000) }} meters away</small>
+          </div>
+        </p>
+      </div>
 
 
       <div v-if="login" class="logoutButton">
@@ -67,7 +70,7 @@ export default {
         axios({
           method: 'get',
           // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
-          url: `http://199.247.11.116/server/nearest-texts/${lat}/${lon}`
+          url: `https://local-text.nl/server/nearest-texts/${lat}/${lon}`
         })
         .then(response => {
           this.text = response.data;
@@ -91,7 +94,7 @@ export default {
       axios({
         method: 'get',
         // url: 'http://localhost:3000/users/' + token.userId,
-        url: 'http://199.247.11.116/server/users/' + token.userId,
+        url: 'https://local-text.nl/server/users/' + token.userId,
         headers: {'token': token.userToken}
       })
       .then(response => {
@@ -114,11 +117,11 @@ export default {
 <style scoped>
 .welcome-container {
   position: absolute;
-  /* background-color: yellow; */
   height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 .bottom-container {
@@ -129,7 +132,22 @@ export default {
 }
 
 .logo-container {
-  padding: 40px 0 0 0;
+  padding: 2.2rem 0 0 0;
+  width: 20rem;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-container__sub-title {
+  font-size: 1.2rem;
+  align-self: flex-end;
+  padding: 0 1.4rem 0 0;
+}
+
+.nearest-text-container {
+  background-color: lightcoral;
+  width: 50vw;
 }
 
 .routes {
@@ -137,15 +155,15 @@ export default {
   align-self: flex-end;
   display: flex;
   justify-content: space-around;
-  margin: 40px 0;
+  margin: 2.4rem 0;
 }
 
 .routes__button {
   background-color: #FF5757;
-  margin: 10px;
-  padding: 10px 15px;
+  margin: 0.6rem;
+  padding: 0.6rem 0.9rem;
   text-decoration: none;
-  letter-spacing: 4px;
+  letter-spacing: 0.25rem;
   color: #FFF;
   transition: ease-in-out .2s;
 }

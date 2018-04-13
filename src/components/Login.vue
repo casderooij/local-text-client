@@ -34,7 +34,7 @@ export default {
       axios({
         method: 'post',
         // url: `http://localhost:3000/login`,
-        url: `http://199.247.11.116/server/login`,
+        url: `https://local-text.nl/server/login`,
         data: {
           username: this.username,
           password: this.password

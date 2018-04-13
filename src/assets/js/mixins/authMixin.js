@@ -20,7 +20,7 @@ export default {
             axios({
                 method: 'get',
                 // url: `http://localhost:3000/users/${token.userId}`,
-                url: `http://199.247.11.116/server/users/${token.userId}`,
+                url: `https://local-text.nl/server/users/${token.userId}`,
                 headers: {
                     'token': token.userToken
                 }

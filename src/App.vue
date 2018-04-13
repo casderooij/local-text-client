@@ -12,10 +12,11 @@ export default {
 </script>
 
 <style>
-  @import url('https://fonts.googleapis.com/css?family=IBM+Plex+Sans');
+  @import url('https://fonts.googleapis.com/css?family=Karla');
 
   body {
-    font-family: 'IBM Plex Sans', sans-serif;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
     margin: 0;
     padding: 0;
   }
