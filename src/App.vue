@@ -2,7 +2,7 @@
   <div id="app">
     <div class="page-header">
       <div class="page-header__logo-container">
-        <img src="./assets/img/logo.svg" alt="local-text logo">
+        <img class="logo-svg" src="./assets/img/logo.svg" alt="local-text logo">
       </div>
       <div class="page-header__menu-button-container">
         <div class="line">
@@ -67,6 +67,7 @@ export default {
   .page-header__logo-container {
     padding: 2rem;
     flex: 0.4;
+    align-self: center;
   }
 
   .page-header__menu-button-container {
