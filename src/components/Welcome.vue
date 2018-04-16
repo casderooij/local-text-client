@@ -129,7 +129,7 @@ export default {
 }
 
 .wait-leave-active {
-  transition: opacity .2s ease;
+  transition: opacity .4s ease;
 }
 
 .wait-enter, .wait-leave-to {
