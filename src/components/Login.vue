@@ -1,18 +1,16 @@
 <template>
-  <div>
-      <router-link :to="{name: 'Welcome'}">To Homepage</router-link>
-      <br><br>
-      <h4>Login</h4>
-      <br><br>
-      <div v-if="error">
-        <p>{{ error.message }}</p>
-      </div>
+  <div class="login-container">
+    <h2 class="login-title">login</h2>
+    
+    <div v-if="error">
+      <p class="login-error">{{ error.message }}</p>
+    </div>
 
-      <form v-on:submit.prevent="doLogin">
-        <input v-model="username" type="text" name="username">
-        <input v-model="password" type="password" name="password">
-        <button id="login-button">login</button>
-      </form>
+    <form v-on:submit.prevent="doLogin" class="login-form">
+      <input v-model="username" placeholder="username" type="text" name="username" class="login-input">
+      <input v-model="password" placeholder="password" type="password" name="password" class="login-input">
+      <button id="login-button" class="login-button">go</button>
+    </form>
   </div>
 </template>
 
@@ -54,6 +52,46 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .login-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+  }
 
+  .login-error {
+    color: #ff5757;
+  }
+
+  .login-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .login-input {
+    border: none;
+    border-bottom: 0.2rem #000 solid;
+    padding: 1rem 1rem .4rem 0.4rem;
+    margin: 1rem 0 4rem 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.4rem;
+  }
+
+  .login-input:first-child {
+    margin-bottom: 0;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .login-button {
+    background-color: white;
+    border: none;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff5757;
+    outline: none;
+  }
 </style>

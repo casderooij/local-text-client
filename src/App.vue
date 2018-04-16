@@ -2,7 +2,9 @@
   <div id="app">
     <div class="page-header">
       <div class="page-header__logo-container">
-        <img class="logo-svg" src="./assets/img/logo.svg" alt="local-text logo">
+        <router-link :to="{name: 'Welcome'}">
+          <img class="logo-svg" src="./assets/img/logo.svg" alt="local-text logo" @click="menu = false">
+        </router-link>
       </div>
       <div class="page-header__menu-button-container">
         <div class="line">
@@ -18,15 +20,27 @@
     <transition name="slide-menu">
       <div class="menu-container" v-if="menu">
         <div class="menu-container__heading">
-          <div class="menu-container__title">menu</div>
+          <div class="menu-container__title" @click="menu = false">menu</div>
           <div class="menu-container__close-container">
             <img class="close-svg" src="./assets/img/close.svg" alt="menu close" @click="menu = false">
           </div>
         </div>
         <div class="menu-horizontal-line">
           <svg width="100%" height="100%">
-            <line x1="15%" y1="2" x2="85%" y2="2" style="stroke:#fff;stroke-width:2" />
+            <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
           </svg>
+        </div>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Login'}" class="route-link"><div @click="menu = false">login</div></router-link>
+          <router-link :to="{name: 'Register'}" class="route-link"><div @click="menu = false">register new user</div></router-link>
+        </div>
+        <div class="menu-horizontal-line">
+          <svg width="100%" height="100%">
+            <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
+          </svg>
+        </div>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Map'}" class="route-link"><div @click="menu = false">show map</div></router-link>
         </div>
       </div>
     </transition>
@@ -61,8 +75,7 @@ export default {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    color: #3B3B3B;
-    text-align: center;
+    color: #474747;
   }
 
   .page-header {
@@ -146,5 +159,24 @@ export default {
 
   .menu-horizontal-line {
     height: 1rem;
+  }
+
+  .menu-routes-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    padding: 2rem;
+  }
+
+  .route-link {
+    color: #fff;
+    text-decoration: none;
+    text-align: left;
+    font-size: 1.4rem;
+    padding: .4rem 0;
+  }
+
+  .route-link:first-child {
+    padding: 0 0 .4rem 0;
   }
 </style>

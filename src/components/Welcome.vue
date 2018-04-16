@@ -17,13 +17,6 @@
         <router-link :to="{name: 'User'}">User</router-link>
       </div>
     </div>
-
-    <div class="bottom-container">
-      <div class="routes">
-        <router-link :to="{name: 'Register'}" class="routes__button routes__register-button">register</router-link>
-        <router-link :to="{name: 'Login'}" class="routes__button routes__login-button">login</router-link>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -110,12 +103,6 @@ export default {
 
 <style scoped>
 .welcome-container {
-  position: absolute;
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .bottom-container {
