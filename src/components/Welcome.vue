@@ -3,10 +3,12 @@
     <div class="welcome-container">
 
       <div class="nearest-text-container">
-        <div class="wait-container" v-if="!textFound">
-          <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
-          <div class="wait-text">waiting for location</div>
-        </div>
+        <transition name="wait">
+          <div class="wait-container" v-if="!textFound">
+            <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
+            <div class="wait-text">waiting for location</div>
+          </div>
+        </transition>
 
         <div v-if="text">
             <p>{{ text[0].title }}</p>
@@ -120,6 +122,18 @@ export default {
   position: absolute;
   width: 100vw;
   padding-top: 10rem;
+}
+
+.wait-enter-active {
+  transition: opacity .4s ease;
+}
+
+.wait-leave-active {
+  transition: opacity .2s ease;
+}
+
+.wait-enter, .wait-leave-to {
+  opacity: 0;
 }
 
 .wait-svg {
