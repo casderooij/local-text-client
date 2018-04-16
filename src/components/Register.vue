@@ -77,7 +77,7 @@ export default {
         })
         .then(res => {
           localStorage.setItem('token', JSON.stringify(res.data.data.token))
-          window.location.replace('http://localhost:8080');
+          window.location.replace('https://local-text.nl');
         })
         .catch(err => {
 
