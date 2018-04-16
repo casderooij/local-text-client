@@ -6,8 +6,7 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    viewBox="0 0 109.33333 105.33333"
-   height="105.33333"
-   width="109.33333"
+   width="100%"
    xml:space="preserve"
    id="svg2"
    version="1.1"><metadata
@@ -56,7 +55,7 @@
            clip-path="url(#clipPath26)"
            id="g22"><path
              id="path28"
-             style="fill:#474747;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none"
              d="m 24.1319,35.07607 h 18.97567 v 26.7227 H 24.1319 Z" /></g></g></g><g
        id="g30"><g
          clip-path="url(#clipPath36)"
@@ -64,7 +63,7 @@
            clip-path="url(#clipPath42)"
            id="g38"><path
              id="path44"
-             style="fill:#474747;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none"
              d="m 38.72137,35.07607 h 18.97567 v 26.7227 H 38.72137 Z" /></g></g></g><g
        id="g46"><g
          clip-path="url(#clipPath52)"
@@ -72,7 +71,7 @@
            clip-path="url(#clipPath58)"
            id="g54"><path
              id="path60"
-             style="fill:#474747;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none"
              d="m 24.1319,16.62096 h 18.97567 v 26.7227 H 24.1319 Z" /></g></g></g><g
        id="g62"><g
          clip-path="url(#clipPath68)"
@@ -80,5 +79,5 @@
            clip-path="url(#clipPath74)"
            id="g70"><path
              id="path76"
-             style="fill:#474747;fill-opacity:1;fill-rule:nonzero;stroke:none"
+             style="fill:#fff;fill-opacity:1;fill-rule:nonzero;stroke:none"
              d="m 38.72137,16.62096 h 18.97567 v 26.7227 H 38.72137 Z" /></g></g></g></g></svg>

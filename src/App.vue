@@ -10,9 +10,21 @@
             <line x1="10%" y1="50%" x2="90%" y2="50%" style="stroke:#474747;stroke-width:5" />
           </svg>
         </div>
-        <div class="menu-button">menu</div>
+        <div class="menu-button" @click="menu = true">menu</div>
+        
       </div>
     </div>
+
+    <transition name="slide-menu">
+      <div class="menu-container" v-if="menu">
+        <div class="menu-container__heading">
+          <div class="menu-container__title">menu</div>
+          <div class="menu-container__close-container">
+            <img class="close-svg" src="./assets/img/close.svg" alt="menu close" @click="menu = false">
+          </div>
+        </div>
+      </div>
+    </transition>
     <router-view/>
   </div>
 </template>
@@ -22,10 +34,8 @@ export default {
   name: 'App',
   data() {
     return {
+      menu: false
     }
-  },
-  methods: {
-    
   }
 }
 </script>
@@ -73,8 +83,52 @@ export default {
 
   .menu-button {
     align-self: center;
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-weight: bold;
     transform: rotate(270deg);
+  }
+
+  .slide-menu-enter-active {
+    transition: all .4s ease;
+  }
+
+  .slide-menu-leave-active {
+    transition: all .2s ease;
+  }
+
+  .slide-menu-enter, .slide-menu-leave-to {
+    transform: translateX(60vw);
+  }
+
+  .menu-container {
+    background-color: #474747;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    width: 60vw;
+    height: 100vh;
+  }
+
+  .menu-container__heading {
+    display: flex;
+  }
+
+  .menu-container__title {
+    color: #fff;
+    align-self: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    transform: rotate(270deg);
+  }
+
+  .menu-container__close-container {
+    flex: 1;
+    padding: 0 0 3.4rem 3.4rem;
+  }
+
+  .close-svg {
+    position: relative;
+    top: 0.6rem;
   }
 </style>
