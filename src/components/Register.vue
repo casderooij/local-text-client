@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <!-- <div>
       <router-link :to="{name: 'Welcome'}">To Homepage</router-link>
       <br><br>
       <h4>Register</h4>
@@ -15,6 +15,19 @@
         <input v-model="password" type="password" name="password">
         <button id="login-button">register new user</button>
       </form>
+  </div> -->
+  <div class="register-container">
+    <h2 class="register-title">register new user</h2>
+    
+    <div v-if="error">
+      <p class="register-error">{{ error.message }}</p>
+    </div>
+
+    <form v-on:submit.prevent="doLogin" class="register-form">
+      <input v-model="username" placeholder="username" type="text" name="username" class="register-input">
+      <input v-model="password" placeholder="password" type="password" name="password" class="register-input">
+      <button id="register-button" class="register-button">register {{ username }}</button>
+    </form>
   </div>
 </template>
 
@@ -64,7 +77,7 @@ export default {
         })
         .then(res => {
           localStorage.setItem('token', JSON.stringify(res.data.data.token))
-          router.push({name:'Welcome'});
+          window.location.replace('http://localhost:8080');
         })
         .catch(err => {
 
@@ -78,6 +91,46 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+  .register-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0 2rem;
+  }
 
+  .register-error {
+    color: #ff5757;
+  }
+
+  .register-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .register-input {
+    border: none;
+    border-bottom: 0.2rem #000 solid;
+    padding: 1rem 1rem .4rem 0.4rem;
+    margin: 1rem 0 4rem 0;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.4rem;
+  }
+
+  .register-input:first-child {
+    margin-bottom: 0;
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  .register-button {
+    background-color: white;
+    border: none;
+    font-family: 'Karla', sans-serif;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ff5757;
+    outline: none;
+  }
 </style>

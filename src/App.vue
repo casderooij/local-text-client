@@ -18,7 +18,7 @@
     </div>
 
     <transition name="slide-menu">
-      <div class="menu-container" v-if="menu">
+      <div class="menu-container" v-if="menu && !hasToken">
         <div class="menu-container__heading">
           <div class="menu-container__title" @click="menu = false">menu</div>
           <div class="menu-container__close-container">
@@ -43,17 +43,64 @@
           <router-link :to="{name: 'Map'}" class="route-link"><div @click="menu = false">show map</div></router-link>
         </div>
       </div>
+
+      <div class="menu-container" v-if="menu && hasToken">
+        <div class="menu-container__heading">
+          <div class="menu-container__title" @click="menu = false">menu</div>
+          <div class="menu-container__close-container">
+            <img class="close-svg" src="./assets/img/close.svg" alt="menu close" @click="menu = false">
+          </div>
+        </div>
+        <div class="menu-horizontal-line">
+          <svg width="100%" height="100%">
+            <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
+          </svg>
+        </div>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Profile'}" class="route-link"><div @click="menu = false">profile</div></router-link>
+        </div>
+        <div class="menu-horizontal-line">
+          <svg width="100%" height="100%">
+            <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
+          </svg>
+        </div>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Add'}" class="route-link"><div @click="menu = false">add text</div></router-link>
+          <router-link :to="{name: 'All'}" class="route-link"><div @click="menu = false">all texts</div></router-link>
+        </div>
+        <div class="menu-horizontal-line">
+          <svg width="100%" height="100%">
+            <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
+          </svg>
+        </div>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Map'}" class="route-link"><div @click="menu = false">show map</div></router-link>
+        </div>
+        <div class="logout-button" @click="doLogout(), menu = false">
+          logout
+        </div>
+      </div>
     </transition>
     <router-view/>
   </div>
 </template>
 
 <script>
+import checkToken from './assets/js/mixins/checkToken';
+
 export default {
   name: 'App',
+  mixins: [checkToken],
   data() {
     return {
       menu: false
+    }
+  },
+  methods: {
+    doLogout: function() {
+      localStorage.removeItem('token');
+      // router.push({name: 'Welcome'});
+      location.reload();
     }
   }
 }
@@ -132,6 +179,9 @@ export default {
 
   .menu-container {
     background-color: #474747;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     top: 0;
     right: 0;
@@ -189,5 +239,14 @@ export default {
 
   .route-link:first-child {
     padding: 0 0 .4rem 0;
+  }
+
+  .logout-button {
+    background: #ff5757;
+    color: #fff;
+    font-size: 1.4rem;
+    font-weight: bold;
+    text-align: center;
+    padding: 1rem 2rem;
   }
 </style>

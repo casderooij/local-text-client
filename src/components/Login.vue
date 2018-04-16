@@ -40,8 +40,8 @@ export default {
       })
       .then(res => {
         this.error = '';
-        localStorage.setItem('token', JSON.stringify(res.data.data.token))
-        router.push({name:'Welcome'});
+        localStorage.setItem('token', JSON.stringify(res.data.data.token));
+        window.location.replace('http://localhost:8080');
       })
       .catch(err => {
         this.error = '';
