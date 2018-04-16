@@ -3,7 +3,10 @@
     <div class="welcome-container">
 
       <div class="nearest-text-container">
-        <p v-if="!textFound">... looking for text ...</p>
+        <div class="wait-container" v-if="!textFound">
+          <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
+          <div class="wait-text">waiting for location</div>
+        </div>
 
         <div v-if="text">
             <p>{{ text[0].title }}</p>
@@ -43,9 +46,6 @@ export default {
       let success = (p) => {
         position = p;
         queryPosition(position.coords.latitude, position.coords.longitude);
-        console.log(p);
-
-        console.log('test');
         navigator.geolocation.getCurrentPosition(success, error);
       }
 
@@ -113,9 +113,33 @@ export default {
 }
 
 .nearest-text-container {
-  background-color: lightcoral;
-  width: 50vw;
+  width: 100vw;
 }
+
+.wait-container {
+  position: absolute;
+  width: 100vw;
+  padding-top: 10rem;
+}
+
+.wait-svg {
+  position: relative;
+  width: 30vw;
+  left: 50%;
+  margin-top: -15vw;
+  margin-left: -15vw;
+  animation:spin 3s ease infinite;
+}
+
+.wait-text {
+  position: relative;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+@-moz-keyframes spin { 40% { -moz-transform: rotate(180deg) scale(1.4, 1.4); } }
+@-webkit-keyframes spin { 40% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); } }
+@keyframes spin { 50% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); transform: rotate(180deg) scale(1.4, 1.4); } }
 
 .routes {
   width: 100vw;

@@ -145,6 +145,12 @@ export default {
     font-size: 1.8rem;
     font-weight: bold;
     transform: rotate(270deg);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   .menu-container__close-container {
