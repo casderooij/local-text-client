@@ -23,6 +23,11 @@
             <img class="close-svg" src="./assets/img/close.svg" alt="menu close" @click="menu = false">
           </div>
         </div>
+        <div class="menu-horizontal-line">
+          <svg width="100%" height="100%">
+            <line x1="15%" y1="2" x2="85%" y2="2" style="stroke:#fff;stroke-width:2" />
+          </svg>
+        </div>
       </div>
     </transition>
     <router-view/>
@@ -137,5 +142,9 @@ export default {
   .close-svg {
     position: relative;
     top: 0.6rem;
+  }
+
+  .menu-horizontal-line {
+    height: 1rem;
   }
 </style>
