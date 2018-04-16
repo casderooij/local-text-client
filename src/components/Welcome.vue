@@ -1,21 +1,15 @@
 <template>
   <div>
     <div class="welcome-container">
-      <div class="logo-container">
-        <img src="../assets/img/logo.svg" alt="">
-        <p class="logo-container__sub-title">virtual graffiti...</p>
-      </div>
 
       <div class="nearest-text-container">
         <p v-if="!textFound">... looking for text ...</p>
 
-        <p v-if="text">
-          <div v-for="t in text">
-            <p>{{ t.title }}</p>
+        <div v-if="text">
+            <p>{{ text[0].title }}</p>
             <br>
-            <small>{{ Math.floor(t.distance * 1000) }} meters away</small>
-          </div>
-        </p>
+            <small>{{ Math.floor(text[0].distance * 1000) }} meters away</small>
+        </div>
       </div>
 
 
@@ -42,7 +36,7 @@ export default {
   mixins: [authMixin],
   data () {
     return {
-      text: '',
+      text: null,
       textFound: false,
       errors: [],
       user: '',
@@ -129,20 +123,6 @@ export default {
   height: 100vh;
   width: 100vw;
   display: flex;
-}
-
-.logo-container {
-  padding: 2.2rem 0 0 0;
-  width: 20rem;
-  align-self: center;
-  display: flex;
-  flex-direction: column;
-}
-
-.logo-container__sub-title {
-  font-size: 1.2rem;
-  align-self: flex-end;
-  padding: 0 1.4rem 0 0;
 }
 
 .nearest-text-container {

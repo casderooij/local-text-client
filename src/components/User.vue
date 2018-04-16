@@ -18,11 +18,6 @@ import axios from 'axios'
 export default {
   name: 'Login',
   mixins: [authMixin],
-  data() {
-    return {
-      
-    }
-  },
   methods: {
     doLogout: function() {
         localStorage.removeItem('token');
