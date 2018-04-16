@@ -78,6 +78,11 @@ export default {
     color: #474747;
   }
 
+  .router-link {
+    text-decoration: none;
+    color: #474747;
+  }
+
   .page-header {
     display: flex;
   }

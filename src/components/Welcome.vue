@@ -2,21 +2,22 @@
   <div>
     <div class="welcome-container">
 
-      <div class="nearest-text-container">
-        <transition name="wait">
-          <div class="wait-container" v-if="!textFound">
-            <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
-            <div class="wait-text">waiting for location</div>
-          </div>
-        </transition>
+      <transition name="wait">
+        <div class="wait-container" v-if="!text">
+          <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
+          <div class="wait-text">waiting for location</div>
+        </div>
+      </transition>
 
-        <div v-if="text">
-            <p>{{ text[0].title }}</p>
-            <br>
-            <small>{{ Math.floor(text[0].distance * 1000) }} meters away</small>
+      <div class="nearest-text-container">
+        <div class="nearest-item" v-if="text" v-for="t in text">
+          <router-link class="router-link" :to="{name: 'Text'}">
+            <div class="nearest-item-title">{{ t.title }}</div>
+            <div v-if="t.distance < 4" class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
+            <div v-if="t.distance >= 4" class="nearest-item-distance"><div class="distance">{{ t.distance }}</div> km away</div>
+          </router-link>
         </div>
       </div>
-
 
       <div v-if="login" class="logoutButton">
         <router-link :to="{name: 'User'}">User</router-link>
@@ -34,6 +35,26 @@ export default {
   mixins: [authMixin],
   data () {
     return {
+      // text: [
+      //   {
+      //     distance: 0.0167,
+      //     id: 1,
+      //     title: 'First text',
+      //     user_id: 1
+      //   },
+      //   {
+      //     distance: 0.0167,
+      //     id: 3,
+      //     title: 'Third text',
+      //     user_id: 1
+      //   },
+      //   {
+      //     distance: 0.452,
+      //     id: 2,
+      //     title: 'Hotel Zwolle',
+      //     user_id: 1
+      //   }
+      // ],
       text: null,
       textFound: false,
       errors: [],
@@ -115,7 +136,37 @@ export default {
 }
 
 .nearest-text-container {
-  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 60vh;
+  margin: 2rem;
+}
+
+.nearest-item {
+  align-self: flex-start;
+}
+
+.nearest-item:nth-child(2) {
+  align-self: flex-end;
+}
+
+.distance {
+  color: #ff5757;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.nearest-item-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-decoration: underline;
+  line-height: 2.5rem;
+  padding-left: 2rem;
+}
+
+.nearest-item-distance {
+  font-size: 1.2rem;
 }
 
 .wait-container {
@@ -155,30 +206,4 @@ export default {
 @-webkit-keyframes spin { 40% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); } }
 @keyframes spin { 50% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); transform: rotate(180deg) scale(1.4, 1.4); } }
 
-.routes {
-  width: 100vw;
-  align-self: flex-end;
-  display: flex;
-  justify-content: space-around;
-  margin: 2.4rem 0;
-}
-
-.routes__button {
-  background-color: #FF5757;
-  margin: 0.6rem;
-  padding: 0.6rem 0.9rem;
-  text-decoration: none;
-  letter-spacing: 0.25rem;
-  color: #FFF;
-  transition: ease-in-out .2s;
-}
-
-.routes__button:hover {
-  color: #3B3B3B;
-}
-
-.routes__register-button {
-  background-color: #FFF;
-  color: #FF5757;
-}
 </style>
