@@ -114,6 +114,7 @@ export default {
     font-size: 16px;
     margin: 0;
     padding: 0;
+    max-width: 100vw;
   }
 
   #app {
@@ -170,11 +171,12 @@ export default {
   }
 
   .slide-menu-leave-active {
-    transition: all .2s ease;
+    transition: all .4s ease;
   }
 
   .slide-menu-enter, .slide-menu-leave-to {
     transform: translateX(60vw);
+    /* opacity: 0; */
   }
 
   .menu-container {
