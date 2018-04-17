@@ -70,11 +70,13 @@ export default {
 
   .login-input {
     border: none;
-    border-bottom: 0.2rem #000 solid;
+    border-bottom: 0.2rem #474747 solid;
     padding: 1rem 1rem .4rem 0.4rem;
     margin: 1rem 0 4rem 0;
     font-family: 'Karla', sans-serif;
     font-size: 1.4rem;
+    color: #474747;
+    outline: none;
   }
 
   .login-input:first-child {

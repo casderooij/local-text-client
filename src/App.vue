@@ -99,7 +99,6 @@ export default {
   methods: {
     doLogout: function() {
       localStorage.removeItem('token');
-      // router.push({name: 'Welcome'});
       location.reload();
     }
   }
@@ -175,7 +174,6 @@ export default {
   }
 
   .slide-menu-enter, .slide-menu-leave-to {
-    /* transform: translateX(60vw); */
     opacity: 0;
   }
 
@@ -227,7 +225,8 @@ export default {
   .menu-routes-container {
     display: flex;
     flex-direction: column;
-    justify-content: left;
+    flex: 1;
+    justify-content: space-around;
     padding: 2rem;
   }
 
@@ -248,7 +247,7 @@ export default {
     color: #fff;
     font-size: 1.4rem;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     padding: 1rem 2rem;
   }
 </style>
