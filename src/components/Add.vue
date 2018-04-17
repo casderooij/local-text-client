@@ -28,13 +28,12 @@ export default {
         return {
             title: '',
             body: '',
-            location: ''
+            location: null
         }
     },
     created() {
-        if(getLocation()) {
-            this.location = getLocation();
-        }
+        this.location = getLocation();
+        console.log(this.location);
     },
     methods: {
         addText: function() {

@@ -14,7 +14,12 @@ export default function() {
         }
   
         let queryPosition = (lat, lon) => {
-            return {latitude: lat, longitude: lon}
+            let coords = {
+                latitude: lat,
+                longitude: lon
+            }
+
+            return coords;
         }
   
         navigator.geolocation.getCurrentPosition(success, error);
