@@ -64,8 +64,8 @@
             <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
           </svg>
         </div>
-        <div class="menu-routes-container">
-          <router-link :to="{name: 'Add'}" class="route-link"><div @click="menu = false">add text</div></router-link>
+        <div class="menu-routes-container" @click="menu = false">
+          <router-link :to="{name: 'Add'}" class="route-link"><div @click="doReload()">add text</div></router-link>
           <router-link :to="{name: 'All'}" class="route-link"><div @click="menu = false">all texts</div></router-link>
         </div>
         <div class="menu-horizontal-line">
@@ -73,8 +73,8 @@
             <line x1="15%" y1="50%" x2="85%" y2="50%" style="stroke:#fff;stroke-width:2" />
           </svg>
         </div>
-        <div class="menu-routes-container" @click="menu = false">
-          <router-link :to="{name: 'Map'}" class="route-link"><div @click="doReload()">show map</div></router-link>
+        <div class="menu-routes-container">
+          <router-link :to="{name: 'Map'}" class="route-link"><div>show map</div></router-link>
         </div>
         <div class="logout-button" @click="doLogout(), menu = false">
           logout
