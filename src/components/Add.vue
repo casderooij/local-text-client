@@ -32,8 +32,27 @@ export default {
         }
     },
     created() {
-        this.location = getLocation();
-        console.log(this.location);
+        if('geolocation' in navigator) {
+            let position;
+    
+            let success = (p) => {
+                position = p;
+                queryPosition(position.coords.latitude, position.coords.longitude);
+                navigator.geolocation.getCurrentPosition(success, error);
+            }
+    
+            let error = (msg) => {
+                console.error(msg);
+            }
+    
+            let queryPosition = (lat, lon) => {
+                this.location.latitude = lat;
+                this.location.longitude = lon;
+            }
+            navigator.geolocation.getCurrentPosition(success, error);
+        } else {
+            console.log('Geolocation not available...');
+        }
     },
     methods: {
         addText: function() {
