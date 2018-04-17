@@ -1,6 +1,6 @@
 <template>
     <div class="add-container">
-        <h2 class="add-title">add text</h2>
+        <h2 class="add-title">add text {{ message }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!location">
@@ -28,28 +28,30 @@ export default {
         return {
             title: '',
             body: '',
-            location: null
+            location: null,
+            message: ''
         }
     },
     created() {
         if('geolocation' in navigator) {
             let position;
-    
+
             let success = (p) => {
                 position = p;
                 queryPosition(position.coords.latitude, position.coords.longitude);
                 navigator.geolocation.getCurrentPosition(success, error);
             }
-    
+
             let error = (msg) => {
                 console.error(msg);
             }
-    
+
             let queryPosition = (lat, lon) => {
-                this.location.latitude = lat;
-                this.location.longitude = lon;
+                this.message = 'yes';
             }
+
             navigator.geolocation.getCurrentPosition(success, error);
+
         } else {
             console.log('Geolocation not available...');
         }
