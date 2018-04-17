@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="page-header">
-      <div class="page-header__logo-container" @click="toWelcome()">
+      <div class="page-header__logo-container" @click="doReload()">
         <router-link :to="{name: 'Welcome'}">
           <img class="logo-svg" src="./assets/img/logo.svg" alt="local-text logo" @click="menu = false">
         </router-link>
@@ -74,7 +74,7 @@
           </svg>
         </div>
         <div class="menu-routes-container">
-          <router-link :to="{name: 'Map'}" class="route-link"><div @click="menu = false">show map</div></router-link>
+          <router-link :to="{name: 'Map'}" class="route-link"><div @click="menu = false, reload()">show map</div></router-link>
         </div>
         <div class="logout-button" @click="doLogout(), menu = false">
           logout
@@ -99,6 +99,9 @@ export default {
   methods: {
     doLogout: function() {
       localStorage.removeItem('token');
+      location.reload();
+    },
+    doReload: function() {
       location.reload();
     }
   }
