@@ -1,15 +1,15 @@
 <template>
     <div class="add-container">
-        <h2 class="add-title">add text {{ location.latitude }} + {{ location.longitude }}</h2>
+        <h2 class="add-title">add text {{ latitude }} + {{ longitude }}</h2>
 
         <transition name="wait">
-            <div class="wait-container" v-if="!location">
+            <div class="wait-container" v-if="!latitude">
                 <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
                 <div class="wait-text">waiting for location</div>
             </div>
         </transition>
 
-        <form v-on:submit.prevent="addText" class="add-form" v-if="location">
+        <form v-on:submit.prevent="addText" class="add-form" v-if="latitude">
             <input v-model="title" placeholder="title" type="text" name="title" class="add-input">
             <textarea rows="8" v-model="body" placeholder="text..." name="body" class="add-textarea"></textarea>
             <button id="add-button" class="add-button">save text</button>
@@ -28,7 +28,8 @@ export default {
         return {
             title: '',
             body: '',
-            location: null,
+            latitude: '',
+            longitude: '',
             message: ''
         }
     },
@@ -47,10 +48,8 @@ export default {
             }
 
             let queryPosition = (lat, lon) => {
-                this.location = {
-                    latitude: lat,
-                    longitude: lon
-                };
+                this.latitude = lat;
+                this.longitude = lon;
             }
 
             navigator.geolocation.getCurrentPosition(success, error);
