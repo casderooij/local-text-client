@@ -115,8 +115,6 @@ export default {
     margin: 0;
     padding: 0;
     max-width: 100vw;
-    height: 100vh;
-    overflow: hidden;
   }
 
   #app {
@@ -177,8 +175,8 @@ export default {
   }
 
   .slide-menu-enter, .slide-menu-leave-to {
-    transform: translateX(60vw);
-    /* opacity: 0; */
+    /* transform: translateX(60vw); */
+    opacity: 0;
   }
 
   .menu-container {
