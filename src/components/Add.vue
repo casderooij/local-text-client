@@ -1,6 +1,6 @@
 <template>
     <div class="add-container">
-        <h2 class="add-title">add text {{ latitude }} + {{ longitude }}</h2>
+        <h2 class="add-title">add text</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
@@ -29,8 +29,7 @@ export default {
             title: '',
             body: '',
             latitude: '',
-            longitude: '',
-            message: ''
+            longitude: ''
         }
     },
     created() {
@@ -62,6 +61,8 @@ export default {
         addText: function() {
             let title = this.title;
             let body = this.body;
+            let latitude = this.latitude;
+            let longitude = this.longitude;
 
             axios({
                 method: 'post',
@@ -72,7 +73,9 @@ export default {
                 },
                 data: {
                     title: title,
-                    body: body
+                    body: body,
+                    latitude: latitude,
+                    longitude: longitude
                 }
             })
             .then(res => window.location.replace('https://local-text.nl'))
