@@ -1,9 +1,9 @@
 <template>
     <div class="add-container">
-        <h2 class="add-title">add text {{ message }}</h2>
+        <h2 class="add-title">add text {{ location.latitude }} + {{ location.longitude }}</h2>
 
         <transition name="wait">
-            <div class="wait-container" v-if="!message">
+            <div class="wait-container" v-if="!location">
                 <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
                 <div class="wait-text">waiting for location</div>
             </div>
@@ -47,7 +47,10 @@ export default {
             }
 
             let queryPosition = (lat, lon) => {
-                this.message = lat;
+                this.location = {
+                    latitude: lat,
+                    longitude: lon
+                };
             }
 
             navigator.geolocation.getCurrentPosition(success, error);
