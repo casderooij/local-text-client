@@ -47,7 +47,7 @@ export default {
             }
 
             let queryPosition = (lat, lon) => {
-                this.message = 'yes';
+                this.message = lat;
             }
 
             navigator.geolocation.getCurrentPosition(success, error);
