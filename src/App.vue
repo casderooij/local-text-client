@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div class="page-header">
-      <div class="page-header__logo-container">
+      <div class="page-header__logo-container" @click="toWelcome()">
         <router-link :to="{name: 'Welcome'}">
           <img class="logo-svg" src="./assets/img/logo.svg" alt="local-text logo" @click="menu = false">
         </router-link>
