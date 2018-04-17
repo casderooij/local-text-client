@@ -3,7 +3,7 @@
         <h2 class="add-title">add text {{ message }}</h2>
 
         <transition name="wait">
-            <div class="wait-container" v-if="!location">
+            <div class="wait-container" v-if="!message">
                 <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
                 <div class="wait-text">waiting for location</div>
             </div>
