@@ -52,31 +52,31 @@ export default {
 
             // navigator.geolocation.getCurrentPosition(gpsSuccess, gpsFailed, positionOption);
 
-            // let position;
+            let position;
 
-            // let success = (position) => {
-            //     queryPosition(position.coords.latitude, position.coords.longitude);
-            //     // navigator.geolocation.getCurrentPosition(success, error, {
-            //     //     maximumAge: 0,
-            //     //     enableHighAccuracy: true,
-            //     //     timeout: Infinity
-            //     // });
-            // }
+            let success = (position) => {
+                queryPosition(position.coords.latitude, position.coords.longitude);
+                navigator.geolocation.getCurrentPosition(success, error, {
+                    maximumAge: 0,
+                    enableHighAccuracy: true,
+                    timeout: Infinity
+                });
+            }
 
-            // let error = (msg) => {
-            //     console.error(msg);
-            // }
+            let error = (msg) => {
+                console.error(msg);
+            }
 
-            // let queryPosition = (lat, lon) => {
-            //     this.latitude = lat;
-            //     this.longitude = lon;
-            // }
+            let queryPosition = (lat, lon) => {
+                this.latitude = lat;
+                this.longitude = lon;
+            }
 
-            // navigator.geolocation.getCurrentPosition(success, error, {
-            //     maximumAge: 0,
-            //     enableHighAccuracy: true,
-            //     timeout: Infinity
-            // });
+            navigator.geolocation.getCurrentPosition(success, error, {
+                maximumAge: 0,
+                enableHighAccuracy: true,
+                timeout: Infinity
+            });
 
             // watchId = navigator.geolocation.watchPosition(
             //     processGeolocation,
@@ -89,26 +89,26 @@ export default {
             //     }
             // );
 
-            var id, target, options;
+            // var id, target, options;
 
-            function success(pos) {
-                console.log(pos.coords.latitude);
-                console.log(pos.coords.longitude);
-                this.latitude = pos.coords.latitude;
-                this.longitude = pos.coords.longitude;
-            }
+            // function success(pos) {
+            //     console.log(pos.coords.latitude);
+            //     console.log(pos.coords.longitude);
+            //     this.latitude = pos.coords.latitude;
+            //     this.longitude = pos.coords.longitude;
+            // }
 
-            function error(err) {
-                console.warn('ERROR(' + err.code + '): ' + err.message);
-            }
+            // function error(err) {
+            //     console.warn('ERROR(' + err.code + '): ' + err.message);
+            // }
 
-            options = {
-                enableHighAccuracy: false,
-                timeout: Infinity,
-                maximumAge: Infinity
-            };
+            // options = {
+            //     enableHighAccuracy: false,
+            //     // timeout: Infinity,
+            //     maximumAge: 0
+            // };
 
-            id = navigator.geolocation.watchPosition(success, error, options);
+            // id = navigator.geolocation.watchPosition(success, error, options);
 
         } else {
             console.log('Geolocation not available...');
