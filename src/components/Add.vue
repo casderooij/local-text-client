@@ -2,6 +2,7 @@
     <div class="add-container">
         <h2 class="add-title">add text</h2>
         <h2>{{ latitude }} : {{ longitude }}</h2>
+        <h2>counter: {{ counter }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
@@ -30,7 +31,8 @@ export default {
             title: '',
             body: '',
             latitude: '',
-            longitude: ''
+            longitude: '',
+            counter: 0
         }
     },
     created() {
@@ -39,6 +41,7 @@ export default {
             let position;
 
             let success = (position) => {
+                this.counter++;
                 queryPosition(position.coords.latitude, position.coords.longitude);
             }
 
