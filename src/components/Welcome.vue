@@ -75,7 +75,7 @@ export default {
         axios({
           method: 'get',
           // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
-          url: `https://local-text.nl/server/nearest-texts-three/${lat}/${lon}`
+          url: `https://local-text.nl/server/nearest-texts/${lat}/${lon}`
         })
         .then(response => {
           this.text = response.data;
