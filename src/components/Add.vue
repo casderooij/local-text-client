@@ -56,7 +56,7 @@ export default {
 
             let success = (position) => {
                 queryPosition(position.coords.latitude, position.coords.longitude);
-                navigator.geolocation.getCurrentPosition(success, error, {
+                navigator.geolocation.watchPosition(success, error, {
                     maximumAge: 0,
                     enableHighAccuracy: true,
                     timeout: Infinity
@@ -72,7 +72,7 @@ export default {
                 this.longitude = lon;
             }
 
-            navigator.geolocation.getCurrentPosition(success, error, {
+            navigator.geolocation.watchPosition(success, error, {
                 maximumAge: 0,
                 enableHighAccuracy: true,
                 timeout: Infinity
