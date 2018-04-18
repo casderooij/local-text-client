@@ -2,7 +2,6 @@
     <div class="add-container">
         <h2 class="add-title">add text</h2>
         <h2>{{ latitude }} + {{ longitude }}</h2>
-        <h2>{{ message }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
@@ -31,8 +30,7 @@ export default {
             title: '',
             body: '',
             latitude: '',
-            longitude: '',
-            message: ''
+            longitude: ''
         }
     },
     created() {
@@ -56,11 +54,11 @@ export default {
 
             let success = (position) => {
                 queryPosition(position.coords.latitude, position.coords.longitude);
-                navigator.geolocation.watchPosition(success, error, {
-                    maximumAge: 0,
-                    enableHighAccuracy: true,
-                    timeout: Infinity
-                });
+                // navigator.geolocation.watchPosition(success, error, {
+                //     maximumAge: 0,
+                //     enableHighAccuracy: true,
+                //     timeout: Infinity
+                // });
             }
 
             let error = (msg) => {
