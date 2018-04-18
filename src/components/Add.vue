@@ -35,30 +35,42 @@ export default {
     },
     created() {
         if('geolocation' in navigator) {
-            let position;
+            var positionOption = { timeout: 500, enableHighAccuracy: true };
+            var gpsSunccuss = function(currentPosition) {
+                this.latitude = currentPosition.coord.latitude;
+                this.longitude = currentPosition.coords.longitude;
+            };
+            var gpsFailed = function() {
+                //use some 3rd party position solution(get position by your device ip)
+                getPositionBy3rdParty();
+            };
+            navigator.geolocation.getCurrentPosition(gpsSunccuss, gpsFailed, positionOption);
+            // let position;
 
-            let success = (p) => {
-                position = p;
-                queryPosition(position.coords.latitude, position.coords.longitude);
-                navigator.geolocation.getCurrentPosition(success, error, {
-                    maximumAge: 0,
-                    enableHighAccuracy: true
-                });
-            }
+            // let success = (p) => {
+            //     position = p;
+            //     queryPosition(position.coords.latitude, position.coords.longitude);
+            //     navigator.geolocation.getCurrentPosition(success, error, {
+            //         maximumAge: 0,
+            //         enableHighAccuracy: true,
+            //         timeout: Infinity
+            //     });
+            // }
 
-            let error = (msg) => {
-                console.error(msg);
-            }
+            // let error = (msg) => {
+            //     console.error(msg);
+            // }
 
-            let queryPosition = (lat, lon) => {
-                this.latitude = lat;
-                this.longitude = lon;
-            }
+            // let queryPosition = (lat, lon) => {
+            //     this.latitude = lat;
+            //     this.longitude = lon;
+            // }
 
-            navigator.geolocation.getCurrentPosition(success, error, {
-                maximumAge: 0,
-                enableHighAccuracy: true
-            });
+            // navigator.geolocation.getCurrentPosition(success, error, {
+            //     maximumAge: 0,
+            //     enableHighAccuracy: true,
+            //     timeout: Infinity
+            // });
 
         } else {
             console.log('Geolocation not available...');
