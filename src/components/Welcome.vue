@@ -39,7 +39,8 @@ export default {
       user: '',
       login: false,
       latitude: '',
-      longitude: ''
+      longitude: '',
+      counter: 0
     }
   },
   created() {
@@ -50,6 +51,8 @@ export default {
         // queryPosition(position.coords.latitude, position.coords.longitude);
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
+
+        this.counter++;
 
         axios({
           method: 'get',
