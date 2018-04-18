@@ -35,16 +35,20 @@ export default {
     },
     created() {
         if('geolocation' in navigator) {
-            var positionOption = { timeout: 500, enableHighAccuracy: true };
+            var positionOption = { timeout: 500, enableHighAccuracy: true, maximumAge: 0 };
+
             var gpsSunccuss = function(currentPosition) {
                 this.latitude = currentPosition.coord.latitude;
                 this.longitude = currentPosition.coords.longitude;
             };
+
             var gpsFailed = function() {
                 //use some 3rd party position solution(get position by your device ip)
-                getPositionBy3rdParty();
+                // getPositionBy3rdParty();
             };
+
             navigator.geolocation.getCurrentPosition(gpsSunccuss, gpsFailed, positionOption);
+            
             // let position;
 
             // let success = (p) => {
