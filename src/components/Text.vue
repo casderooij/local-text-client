@@ -5,6 +5,8 @@
 
         <div class="text-body">{{ text.body }}</div>
 
+        <div class="text-distance"></div>
+
         <div class="text-button-container" v-if="isUser">
             <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
                 <div class="text-button text-update">update</div>
@@ -35,13 +37,18 @@ export default {
         axios({
             method: 'get',
             url: 'https://local-text.nl/server/texts/' + this.id,
-            headers: {'token': JSON.parse(localStorage.getItem('token'))}
+            headers: {'token': JSON.parse(localStorage.getItem('token')).userToken}
         })
         .then(response => {
-            if(JSON.parse(localStorage.getItem('token')).userId === response.data.user_id) {
-                this.message = 'yes, same user';
+            this.text = response.data;
+            let userId = JSON.parse(localStorage.getItem('token')).userId;
+            if(parseInt(response.data.user_id) === parseInt(userId)) {
+                console.log('Same user');
+                this.isUser = true;
+            } else {
+                console.log('not same user');
+                this.isUser = false;
             }
-            // this.text = response.data
         })
         .catch(error => console.log(error));
     },

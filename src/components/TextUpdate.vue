@@ -29,7 +29,7 @@ export default {
         axios({
             method: 'get',
             url: 'https://local-text.nl/server/texts/' + this.id,
-            headers: {'token': JSON.parse(localStorage.getItem('token'))}
+            headers: {'token': JSON.parse(localStorage.getItem('token')).userToken}
         })
         .then(response => this.text = response.data)
         .catch(error => console.log(error));
