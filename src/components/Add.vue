@@ -40,7 +40,10 @@ export default {
             let success = (p) => {
                 position = p;
                 queryPosition(position.coords.latitude, position.coords.longitude);
-                navigator.geolocation.getCurrentPosition(success, error);
+                navigator.geolocation.getCurrentPosition(success, error, {
+                    maximumAge: 0,
+                    enableHighAccuracy: true
+                });
             }
 
             let error = (msg) => {
@@ -52,7 +55,10 @@ export default {
                 this.longitude = lon;
             }
 
-            navigator.geolocation.getCurrentPosition(success, error);
+            navigator.geolocation.getCurrentPosition(success, error, {
+                maximumAge: 0,
+                enableHighAccuracy: true
+            });
 
         } else {
             console.log('Geolocation not available...');
