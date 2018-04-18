@@ -40,7 +40,7 @@ export default {
             let body = this.text.body;
 
             axios({
-                method: 'patch',
+                method: 'put',
                 url: `https://local-text.nl/server/texts/${this.id}`,
                 header: {'token': JSON.parse(localStorage.getItem('token'))},
                 data: {

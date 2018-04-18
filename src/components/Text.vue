@@ -62,6 +62,7 @@ export default {
     }
 
     .text-button-container {
+        z-index: 10;
         width: 100vw;
         position: absolute;
         bottom: 0;
