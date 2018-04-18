@@ -33,26 +33,6 @@ export default {
   mixins: [authMixin],
   data () {
     return {
-      // text: [
-      //   {
-      //     distance: 0.0167,
-      //     id: 1,
-      //     title: 'First text',
-      //     user_id: 1
-      //   },
-      //   {
-      //     distance: 0.0167,
-      //     id: 3,
-      //     title: 'Third text',
-      //     user_id: 1
-      //   },
-      //   {
-      //     distance: 0.452,
-      //     id: 2,
-      //     title: 'Hotel Zwolle',
-      //     user_id: 1
-      //   }
-      // ],
       text: null,
       textFound: false,
       errors: [],
@@ -67,22 +47,13 @@ export default {
       let position;
 
       let success = (position) => {
-        queryPosition(position.coords.latitude, position.coords.longitude);
-        // navigator.geolocation.getCurrentPosition(success, error);
-      }
-
-      let error = (msg) => {
-        console.error(msg);
-      }
-
-      let queryPosition = (lat, lon) => {
-        this.latitude = lat;
-        this.longitude = lon;
+        // queryPosition(position.coords.latitude, position.coords.longitude);
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
 
         axios({
           method: 'get',
-          // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
-          url: `https://local-text.nl/server/nearest-texts/${lat}/${lon}`
+          url: `https://local-text.nl/server/nearest-texts/${position.coords.latitude}/${position.coords.longitude}`
         })
         .then(response => {
           this.text = response.data.slice(0, 3);
@@ -92,6 +63,28 @@ export default {
           this.errors.push(e)
         })
       }
+
+      let error = (msg) => {
+        console.error(msg);
+      }
+
+      // let queryPosition = (lat, lon) => {
+      //   this.latitude = lat;
+      //   this.longitude = lon;
+
+      //   axios({
+      //     method: 'get',
+      //     // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
+      //     url: `https://local-text.nl/server/nearest-texts/${lat}/${lon}`
+      //   })
+      //   .then(response => {
+      //     this.text = response.data.slice(0, 3);
+      //     this.textFound = true;
+      //   })
+      //   .catch(e => {
+      //     this.errors.push(e)
+      //   })
+      // }
 
       navigator.geolocation.watchPosition(success, error, {
         maximumAge: 0,
