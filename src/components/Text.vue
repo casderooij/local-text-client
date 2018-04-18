@@ -1,20 +1,6 @@
 <template>
-    <div class="add-container">
-        <h2 class="add-title">add text</h2>
-        <h2>{{ latitude }} : {{ longitude }}</h2>
-
-        <transition name="wait">
-            <div class="wait-container" v-if="!latitude">
-                <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
-                <div class="wait-text">waiting for location</div>
-            </div>
-        </transition>
-
-        <form v-on:submit.prevent="addText" class="add-form" v-if="latitude">
-            <input v-model="title" placeholder="title" type="text" name="title" class="add-input">
-            <textarea rows="4" v-model="body" placeholder="text..." name="body" class="add-textarea"></textarea>
-            <button id="add-button" class="add-button">save text</button>
-        </form>
+    <div class="text-container">
+        <h2 class="text-title">{{ id }}</h2>
     </div>
 </template>
 
@@ -25,6 +11,7 @@ import getLocation from '../assets/js/methods/getLocation'
 
 export default {
     name: 'Add',
+    props: ['id'],
     data() {
         return {
             title: '',
