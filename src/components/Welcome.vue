@@ -13,8 +13,7 @@
         <div class="nearest-item" v-if="text" v-for="t in text">
           <router-link class="router-link" :to="{name: 'Text'}">
             <div class="nearest-item-title">{{ t.title }}</div>
-            <div v-if="t.distance < 4" class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
-            <div v-if="t.distance >= 4" class="nearest-item-distance"><div class="distance">{{ t.distance }}</div> km away</div>
+            <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
           </router-link>
         </div>
       </div>

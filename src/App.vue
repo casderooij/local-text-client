@@ -241,7 +241,7 @@ export default {
     padding: .4rem 0;
   }
 
-  .route-link:first-child {
+  .route-link:nth-child(odd) {
     padding: 0 0 .4rem 0;
   }
 
