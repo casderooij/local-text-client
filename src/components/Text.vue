@@ -1,10 +1,11 @@
 <template>
     <div class="text-container" v-if="text">
         <h2 class="text-title">{{ text.title }}</h2>
+        <h2>{{ message }}</h2>
 
         <div class="text-body">{{ text.body }}</div>
 
-        <div class="text-button-container">
+        <div class="text-button-container" v-if="isUser">
             <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
                 <div class="text-button text-update">update</div>
             </router-link>
@@ -23,7 +24,9 @@ export default {
     data() {
         return {
             id: '',
-            text: null
+            text: null,
+            isUser: false,
+            message: ''
         }
     },
     created() {
@@ -34,7 +37,12 @@ export default {
             url: 'https://local-text.nl/server/texts/' + this.id,
             headers: {'token': JSON.parse(localStorage.getItem('token'))}
         })
-        .then(response => this.text = response.data)
+        .then(response => {
+            if(JSON.parse(localStorage.getItem('token')).userId === response.data.user_id) {
+                this.message = 'yes, same user';
+            }
+            // this.text = response.data
+        })
         .catch(error => console.log(error));
     },
     methods: {
