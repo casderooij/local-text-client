@@ -48,7 +48,7 @@ export default {
                     body: body
                 }
             })
-            .then(response => console.log('Success!'))
+            .then(response => router.push({name: 'Text', params: {id: this.id}}))
             .catch(error => console.log(error));
         }
     }
