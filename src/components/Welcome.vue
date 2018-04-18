@@ -14,6 +14,7 @@
           <router-link class="router-link" :to="{name: 'Text'}">
             <div class="nearest-item-title">{{ t.title }}</div>
             <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
+            <div>{{ t.id }}</div>
           </router-link>
         </div>
       </div>
