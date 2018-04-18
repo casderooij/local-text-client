@@ -114,6 +114,7 @@ export default {
   body {
     font-family: 'Karla', sans-serif;
     font-size: 16px;
+    color: #474747;
     margin: 0;
     padding: 0;
     max-width: 100vw;

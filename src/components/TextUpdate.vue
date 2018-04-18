@@ -1,15 +1,12 @@
 <template>
-    <div class="text-container" v-if="text">
-        <h2 class="text-title">{{ text.title }}</h2>
+    <div class="update-container" v-if="text">
+        <h2 class="update-title">update {{ text.title }}</h2>
 
-        <div class="text-body">{{ text.body }}</div>
-
-        <div class="text-button-container">
-            <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
-                <div class="text-button text-update">update</div>
-            </router-link>
-            <div class="text-button text-delete" @click="doDelete()">delete</div>
-        </div>
+        <form v-on:submit.prevent="updateText" class="update-form">
+            <input v-model="text.title" placeholder="title" type="text" name="title" class="update-input">
+            <textarea rows="4" v-model="text.body" placeholder="text..." name="body" class="update-textarea"></textarea>
+            <button id="update-button" class="update-button">update text</button>
+        </form>
     </div>
 </template>
 
@@ -38,13 +35,20 @@ export default {
         .catch(error => console.log(error));
     },
     methods: {
-        doDelete() {
+        updateText() {
+            let title = this.text.title;
+            let body = this.text.body;
+
             axios({
-                method: 'delete',
-                url: 'https://local-text.nl/server/texts/' + this.id,
-                headers: {'token': JSON.parse(localStorage.getItem('token'))}
+                method: 'patch',
+                url: `https://local-text.nl/server/texts/${this.id}`,
+                header: {'token': JSON.parse(localStorage.getItem('token'))},
+                data: {
+                    title: title,
+                    body: body
+                }
             })
-            .then(response => router.push({name: 'Welcome'}))
+            .then(response => console.log('Success!'))
             .catch(error => console.log(error));
         }
     }

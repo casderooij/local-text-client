@@ -8,6 +8,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Add from '@/components/Add'
 import Text from '@/components/Text'
+import TextUpdate from '@/components/TextUpdate'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ const router = new Router({
       path: '/text/:id',
       name: 'Text',
       component: Text
+    },
+    {
+      path: '/text-update/:id',
+      name: 'TextUpdate',
+      component: TextUpdate
     }
   ]
 })
