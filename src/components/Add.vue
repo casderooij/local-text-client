@@ -1,7 +1,6 @@
 <template>
     <div class="add-container">
         <h2 class="add-title">add text</h2>
-        <h2>{{ latitude }} + {{ longitude }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
@@ -35,20 +34,6 @@ export default {
     },
     created() {
         if('geolocation' in navigator) {
-            // var positionOption = { timeout: 500, enableHighAccuracy: true, maximumAge: 0 };
-
-            // var gpsSuccess = function(currentPosition) {
-            //     this.latitude = currentPosition.coord.latitude;
-            //     this.longitude = currentPosition.coords.longitude;
-            //     this.message = 'yes';
-            // };
-
-            // var gpsFailed = function() {
-            //     //use some 3rd party position solution(get position by your device ip)
-            //     // getPositionBy3rdParty();
-            // };
-
-            // navigator.geolocation.getCurrentPosition(gpsSuccess, gpsFailed, positionOption);
 
             let position;
 
@@ -75,38 +60,6 @@ export default {
                 enableHighAccuracy: true,
                 timeout: Infinity
             });
-
-            // watchId = navigator.geolocation.watchPosition(
-            //     processGeolocation,
-            //     // Optional settings below
-            //     geolocationError,
-            //     {
-            //         timeout: 0,
-            //         enableHighAccuracy: true,
-            //         maximumAge: Infinity
-            //     }
-            // );
-
-            // var id, target, options;
-
-            // function success(pos) {
-            //     console.log(pos.coords.latitude);
-            //     console.log(pos.coords.longitude);
-            //     this.latitude = pos.coords.latitude;
-            //     this.longitude = pos.coords.longitude;
-            // }
-
-            // function error(err) {
-            //     console.warn('ERROR(' + err.code + '): ' + err.message);
-            // }
-
-            // options = {
-            //     enableHighAccuracy: false,
-            //     // timeout: Infinity,
-            //     maximumAge: 0
-            // };
-
-            // id = navigator.geolocation.watchPosition(success, error, options);
 
         } else {
             console.log('Geolocation not available...');
