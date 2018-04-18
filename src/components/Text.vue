@@ -1,6 +1,7 @@
 <template>
     <div class="text-container">
         <h2 class="text-title">{{ id }}</h2>
+        <div>{{ message }}</div>
     </div>
 </template>
 
@@ -11,15 +12,17 @@ import getLocation from '../assets/js/methods/getLocation'
 
 export default {
     name: 'Add',
-    props: ['id'],
     data() {
         return {
             title: '',
-            body: ''
+            body: '',
+            message: ''
         }
     },
     created() {
-        
+        let url_string = window.location.href;
+        let id = window.location.href.split('/')[5];
+        this.message = id;
     }
 }
 </script>

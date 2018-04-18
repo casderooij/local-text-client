@@ -11,7 +11,7 @@
 
       <div class="nearest-text-container">
         <div class="nearest-item" v-if="text" v-for="t in text">
-          <router-link class="router-link" :to="{name: 'Text', params: {id: t.id}, props: {id: t.id}}">
+          <router-link class="router-link" :to="{name: 'Text', params: {id: t.id}}">
             <div class="nearest-item-title">{{ t.title }}</div>
             <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
             <div>{{ t.id }}</div>
