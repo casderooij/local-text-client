@@ -2,6 +2,8 @@
   <div>
     <div class="welcome-container">
 
+      <h2>{{ latitude }} : {{ longitude }}</h2>
+
       <transition name="wait">
         <div class="wait-container" v-if="!text">
           <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
@@ -55,15 +57,16 @@ export default {
       textFound: false,
       errors: [],
       user: '',
-      login: false
+      login: false,
+      latitude: '',
+      longitude: ''
     }
   },
   created() {
     if('geolocation' in navigator) {
       let position;
 
-      let success = (p) => {
-        position = p;
+      let success = (position) => {
         queryPosition(position.coords.latitude, position.coords.longitude);
         // navigator.geolocation.getCurrentPosition(success, error);
       }
@@ -73,6 +76,9 @@ export default {
       }
 
       let queryPosition = (lat, lon) => {
+        this.latitude = lat;
+        this.longitude = lon;
+
         axios({
           method: 'get',
           // url: `http://localhost:3000/nearest-texts/${lat}/${lon}`
