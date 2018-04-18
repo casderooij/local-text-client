@@ -7,6 +7,7 @@ import User from '@/components/User'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Add from '@/components/Add'
+import Text from '@/components/Text'
 
 Vue.use(Router)
 
@@ -36,9 +37,17 @@ const router = new Router({
       component: Login
     },
     {
-      path: '/add-text',
+      path: '/add-text/:id',
       name: 'Add',
-      component: Add
+      component: Add,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/text',
+      name: 'Text',
+      component: Text
     }
   ]
 })
