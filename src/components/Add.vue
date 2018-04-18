@@ -2,6 +2,7 @@
     <div class="add-container">
         <h2 class="add-title">add text</h2>
         <h2>{{ latitude }} + {{ longitude }}</h2>
+        <h2>{{ message }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
@@ -30,16 +31,18 @@ export default {
             title: '',
             body: '',
             latitude: '',
-            longitude: ''
+            longitude: '',
+            message: ''
         }
     },
     created() {
         if('geolocation' in navigator) {
             var positionOption = { timeout: 500, enableHighAccuracy: true, maximumAge: 0 };
 
-            var gpsSunccuss = function(currentPosition) {
+            var gpsSuccess = function(currentPosition) {
                 this.latitude = currentPosition.coord.latitude;
                 this.longitude = currentPosition.coords.longitude;
+                this.message = 'yes';
             };
 
             var gpsFailed = function() {
@@ -47,12 +50,11 @@ export default {
                 // getPositionBy3rdParty();
             };
 
-            navigator.geolocation.getCurrentPosition(gpsSunccuss, gpsFailed, positionOption);
-            
+            navigator.geolocation.getCurrentPosition(gpsSuccess, gpsFailed, positionOption);
+
             // let position;
 
-            // let success = (p) => {
-            //     position = p;
+            // let success = (position) => {
             //     queryPosition(position.coords.latitude, position.coords.longitude);
             //     navigator.geolocation.getCurrentPosition(success, error, {
             //         maximumAge: 0,
