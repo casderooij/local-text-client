@@ -37,7 +37,7 @@ const router = new Router({
       component: Login
     },
     {
-      path: '/add-text/:id',
+      path: '/text/:id',
       name: 'Add',
       component: Add,
       meta: {
