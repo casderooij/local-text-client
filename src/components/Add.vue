@@ -52,31 +52,63 @@ export default {
 
             // navigator.geolocation.getCurrentPosition(gpsSuccess, gpsFailed, positionOption);
 
-            let position;
+            // let position;
 
-            let success = (position) => {
-                queryPosition(position.coords.latitude, position.coords.longitude);
-                // navigator.geolocation.getCurrentPosition(success, error, {
-                //     maximumAge: 0,
-                //     enableHighAccuracy: true,
-                //     timeout: Infinity
-                // });
+            // let success = (position) => {
+            //     queryPosition(position.coords.latitude, position.coords.longitude);
+            //     // navigator.geolocation.getCurrentPosition(success, error, {
+            //     //     maximumAge: 0,
+            //     //     enableHighAccuracy: true,
+            //     //     timeout: Infinity
+            //     // });
+            // }
+
+            // let error = (msg) => {
+            //     console.error(msg);
+            // }
+
+            // let queryPosition = (lat, lon) => {
+            //     this.latitude = lat;
+            //     this.longitude = lon;
+            // }
+
+            // navigator.geolocation.getCurrentPosition(success, error, {
+            //     maximumAge: 0,
+            //     enableHighAccuracy: true,
+            //     timeout: Infinity
+            // });
+
+            // watchId = navigator.geolocation.watchPosition(
+            //     processGeolocation,
+            //     // Optional settings below
+            //     geolocationError,
+            //     {
+            //         timeout: 0,
+            //         enableHighAccuracy: true,
+            //         maximumAge: Infinity
+            //     }
+            // );
+
+            var id, target, options;
+
+            function success(pos) {
+                console.log(pos.coords.latitude);
+                console.log(pos.coords.longitude);
+                this.latitude = pos.coords.latitude;
+                this.longitude = pos.coords.longitude;
             }
 
-            let error = (msg) => {
-                console.error(msg);
+            function error(err) {
+                console.warn('ERROR(' + err.code + '): ' + err.message);
             }
 
-            let queryPosition = (lat, lon) => {
-                this.latitude = lat;
-                this.longitude = lon;
-            }
+            options = {
+                enableHighAccuracy: false,
+                timeout: Infinity,
+                maximumAge: Infinity
+            };
 
-            navigator.geolocation.getCurrentPosition(success, error, {
-                maximumAge: 0,
-                enableHighAccuracy: true,
-                timeout: Infinity
-            });
+            id = navigator.geolocation.watchPosition(success, error, options);
 
         } else {
             console.log('Geolocation not available...');
