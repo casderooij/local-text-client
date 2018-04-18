@@ -64,7 +64,7 @@ export default {
       let success = (p) => {
         position = p;
         queryPosition(position.coords.latitude, position.coords.longitude);
-        navigator.geolocation.getCurrentPosition(success, error);
+        // navigator.geolocation.getCurrentPosition(success, error);
       }
 
       let error = (msg) => {
@@ -86,7 +86,7 @@ export default {
         })
       }
 
-      navigator.geolocation.getCurrentPosition(success, error);
+      navigator.geolocation.watchPosition(success, error);
 
     } else {
       console.log('Geolocation not available...');
