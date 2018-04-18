@@ -87,7 +87,11 @@ export default {
         })
       }
 
-      navigator.geolocation.watchPosition(success, error);
+      navigator.geolocation.watchPosition(success, error, {
+        maximumAge: 0,
+        enableHighAccuracy: true,
+        timeout: Infinity
+      });
 
     } else {
       console.log('Geolocation not available...');
