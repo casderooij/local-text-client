@@ -44,7 +44,7 @@ export default {
                 url: 'https://local-text.nl/server/texts/' + this.id,
                 headers: {'token': JSON.parse(localStorage.getItem('token'))}
             })
-            .then(response => router.push({name: 'Welcome'}))
+            .then(response => window.location.assign("https://www.w3schools.com"))
             .catch(error => console.log(error));
         }
     }

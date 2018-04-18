@@ -1,11 +1,11 @@
 <template>
     <div class="update-container" v-if="text">
-        <h2 class="update-title">update {{ text.title }}</h2>
+        <h2 class="update-title">update text</h2>
 
         <form v-on:submit.prevent="updateText" class="update-form">
             <input v-model="text.title" placeholder="title" type="text" name="title" class="update-input">
             <textarea rows="4" v-model="text.body" placeholder="text..." name="body" class="update-textarea"></textarea>
-            <button id="update-button" class="update-button">update text</button>
+            <button id="update-button" class="update-button">update</button>
         </form>
     </div>
 </template>
@@ -56,37 +56,44 @@ export default {
 </script>
 
 <style>
-    .text-container {
+    .update-container {
         padding: 0 2rem;
     }
 
-    .text-body {
-        margin-top: 2rem;
-        font-size: 1.4rem;
-    }
-
-    .text-button-container {
-        width: 100vw;
-        position: absolute;
-        bottom: 0;
-        left: 0;
+    .update-form {
         display: flex;
-        justify-content: space-between;
-        padding: 1rem 0;
+        flex-direction: column;
     }
 
-    .text-button {
+    .update-input {
+        border: none;
+        border-bottom: 0.2rem #474747 solid;
+        padding: 1rem 1rem .4rem .4rem;
+        margin: 1rem 0 1.5rem 0;
+        font-family: 'Karla', sans-serif;
         font-size: 1.4rem;
         font-weight: bold;
-        margin: 0 2rem;
-    }
-
-    .text-delete {
-        color: #ff5757;
-    }
-
-    .text-link {
-        text-decoration: none;
         color: #474747;
+        outline: none;
+    }
+
+    .update-textarea {
+        border: none;
+        padding: 1rem 1rem .4rem .4rem;
+        margin: 1rem 0 2rem 0;
+        font-family: 'Karla', sans-serif;
+        font-size: 1.4rem;
+        color: #474747;
+        outline: none;
+    }
+
+    .update-button {
+        background-color: white;
+        border: none;
+        font-family: 'Karla', sans-serif;
+        font-size: 1.8rem;
+        font-weight: bold;
+        color: #ff5757;
+        outline: none;
     }
 </style>
