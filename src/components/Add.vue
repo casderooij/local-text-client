@@ -56,11 +56,11 @@ export default {
 
             let success = (position) => {
                 queryPosition(position.coords.latitude, position.coords.longitude);
-                navigator.geolocation.getCurrentPosition(success, error, {
-                    maximumAge: 0,
-                    enableHighAccuracy: true,
-                    timeout: Infinity
-                });
+                // navigator.geolocation.getCurrentPosition(success, error, {
+                //     maximumAge: 0,
+                //     enableHighAccuracy: true,
+                //     timeout: Infinity
+                // });
             }
 
             let error = (msg) => {
