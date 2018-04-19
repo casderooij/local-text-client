@@ -187,9 +187,15 @@ export default {
     }
 
     .wait-container {
-        position: relative;
-        max-width: 100vw;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        width: 50vw;
         padding-top: 10rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .wait-enter-active {
