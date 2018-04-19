@@ -9,9 +9,9 @@
         </transition>
 
         <div v-if="distance">
-            <div class="text-distance">{{ distance }} m</div>
-
             <div class="text-username" v-if="text"><username :id="text.user_id"></username></div>
+
+            <div class="text-distance">{{ distance }} m</div>
 
             <div class="title-body-container">
                 <h2 class="text-title">{{ text.title }}</h2>
@@ -141,6 +141,7 @@ export default {
     .text-username {
         text-align: left;
         padding-left: 2rem;
+        padding-bottom: 2rem;
         font-weight: bold;
         font-size: 1.2rem;
     }
