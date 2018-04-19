@@ -186,7 +186,7 @@ export default {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    position: absolute;
+    position: fixed;
     top: 0;
     right: 0;
     z-index: 10;
