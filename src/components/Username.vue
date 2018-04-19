@@ -1,7 +1,6 @@
 <template>
     <div class="username-container">
-        <p>{{ id }}</p>
-        <p>{{ user.username }}</p>
+        {{ user.username }}
     </div>
 </template>
 
@@ -29,5 +28,4 @@ export default {
 </script>
 
 <style>
-
 </style>

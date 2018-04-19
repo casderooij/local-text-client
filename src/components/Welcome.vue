@@ -2,8 +2,8 @@
   <div>
     <div class="welcome-container">
 
-      <h2>{{ latitude }} : {{ longitude }}</h2>
-      <h2>counter: {{ counter }}</h2>
+      <!-- <h2>{{ latitude }} : {{ longitude }}</h2>
+      <h2>counter: {{ counter }}</h2> -->
 
       <transition name="wait">
         <div class="wait-container" v-if="!text">
@@ -15,10 +15,8 @@
       <div class="nearest-text-container">
         <div class="nearest-item" v-if="text" v-for="t in text">
           <router-link class="router-link" :to="{name: 'Text', params: {id: t.id}}">
-            <div class="nearest-item-title">{{ t.title }}</div>
+            <div class="nearest-item-title">{{ t.title }}</div><span><username :id="t.user_id"></username></span>
             <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
-            <username :id="t.user_id"></username>
-            <div>{{ t.id }}</div>
           </router-link>
         </div>
       </div>
@@ -157,6 +155,10 @@ export default {
     line-height: 2.5rem;
     padding-left: 2rem;
   }
+
+  /* .nearest-item-username {
+    padding: 0 0 0 2rem;
+  } */
 
   .nearest-item-distance {
     font-size: 1.2rem;
