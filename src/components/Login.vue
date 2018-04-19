@@ -40,8 +40,12 @@ export default {
       })
       .then(res => {
         this.error = '';
+        console.log(res.data.data.token);
+        let oneday = new Date();
+        oneday.setHours(oneday.getHours() + 1);
+        res.data.data.token.time = oneday;
         localStorage.setItem('token', JSON.stringify(res.data.data.token));
-        window.location.replace('https://local-text.nl');
+        // window.location.replace('https://local-text.nl');
       })
       .catch(err => {
         this.error = '';
