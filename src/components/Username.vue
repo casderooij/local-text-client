@@ -1,7 +1,7 @@
 <template>
     <div class="username-container">
         <p>{{ id }}</p>
-        <p>{{ message }}</p>
+        <p>{{ user.username }}</p>
     </div>
 </template>
 
@@ -13,16 +13,17 @@ export default {
     props: ['id'],
     data () {
         return {
-            userId: id,
             user: null,
             message: ''
         }
     },
-    watch: {
-        userId: () => {
-            console.log('id is set!!!');
-            this.message = 'id is set!!!';
-        }
+    created() {
+        axios({
+            method: 'get',
+            url: 'https://local-text.nl/server/users/' + this.id
+        })
+        .then(response => this.user = response.data)
+        .catch(error => console.log(error));
     }
 }
 </script>
