@@ -213,6 +213,7 @@ export default {
 
     .wait-svg {
         position: relative;
+        align-self: center;
         width: 30vw;
         animation:spin 3s ease infinite;
     }

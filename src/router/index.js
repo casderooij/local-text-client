@@ -9,6 +9,7 @@ import Login from '@/components/Login'
 import Add from '@/components/Add'
 import Text from '@/components/Text'
 import TextUpdate from '@/components/TextUpdate'
+import All from '@/components/All'
 
 Vue.use(Router)
 
@@ -54,6 +55,14 @@ const router = new Router({
       path: '/text-update/:id',
       name: 'TextUpdate',
       component: TextUpdate
+    },
+    {
+      path: '/all-texts',
+      name: 'All',
+      component: All,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 })
