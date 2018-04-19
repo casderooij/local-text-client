@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="menu-container" v-if="menu && isLoggedIn">
+      <div class="menu-container" v-if="menu && hasToken">
         <div class="menu-container__heading">
           <div class="menu-container__title" @click="menu = false">menu</div>
           <div class="menu-container__close-container">
@@ -87,20 +87,13 @@
 
 <script>
 import checkToken from './assets/js/mixins/checkToken';
-import router from './router'
 
 export default {
   name: 'App',
   mixins: [checkToken],
   data() {
     return {
-      menu: false,
-      isLoggedIn: false
-    }
-  },
-  created() {
-    if(localStorage.getItem('token')) {
-      this.isLoggedIn = true;
+      menu: false
     }
   },
   methods: {
@@ -109,12 +102,10 @@ export default {
     },
     doLogout: function() {
       localStorage.removeItem('token');
-      // location.reload();
-      this.isLoggedIn = false;
-      router.push({name: 'Welcome'});
+      location.reload();
     },
     doReload: function() {
-      // location.reload();
+      location.reload();
     }
   }
 }

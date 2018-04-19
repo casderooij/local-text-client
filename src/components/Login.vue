@@ -41,8 +41,7 @@ export default {
       .then(res => {
         this.error = '';
         localStorage.setItem('token', JSON.stringify(res.data.data.token));
-        // window.location.replace('https://local-text.nl');
-        router.push({name: 'Welcome'});
+        window.location.replace('https://local-text.nl');
       })
       .catch(err => {
         this.error = '';
