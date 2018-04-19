@@ -87,6 +87,7 @@
 
 <script>
 import checkToken from './assets/js/mixins/checkToken';
+import router from './router'
 
 export default {
   name: 'App',
