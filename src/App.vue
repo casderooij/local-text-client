@@ -105,7 +105,7 @@ export default {
       location.reload();
     },
     doReload: function() {
-      location.reload();
+      // location.reload();
     }
   }
 }
