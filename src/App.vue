@@ -99,7 +99,7 @@ export default {
   created() {
     // var element = document.getElementsByTagName("BODY")[0];
     // element.requestFullscreen();
-    setTimeout(function() { window.scrollTo(0, 1) }, 100);
+    setTimeout(function() { document.body.requestFullscreen(); }, 100);
   },
   methods: {
     doLogout: function() {
