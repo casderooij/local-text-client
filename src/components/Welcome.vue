@@ -15,7 +15,10 @@
       <div class="nearest-text-container">
         <div class="nearest-item" v-if="text" v-for="t in text">
           <router-link class="router-link" :to="{name: 'Text', params: {id: t.id}}">
-            <div class="nearest-item-title">{{ t.title }}</div><span><username :id="t.user_id"></username></span>
+            <div class="nearest-item-container">
+              <div class="nearest-item-title">{{ t.title }}</div>
+              <div class="nearest-item-username"><username :id="t.user_id"></username></div>
+            </div>
             <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
           </router-link>
         </div>
@@ -36,6 +39,7 @@ export default {
   data () {
     return {
       text: null,
+      // text: [{id: 1, title: 'test1', user_id: 1}, {id: 2, title: 'test2', user_id: 2}, {id: 3, title: 'test3', user_id: 13}],
       textFound: false,
       errors: [],
       user: '',
@@ -148,6 +152,10 @@ export default {
     display: inline-block;
   }
 
+  .nearest-item-container {
+    display: flex;
+  }
+
   .nearest-item-title {
     font-size: 1.4rem;
     font-weight: bold;
@@ -156,9 +164,11 @@ export default {
     padding-left: 2rem;
   }
 
-  /* .nearest-item-username {
-    padding: 0 0 0 2rem;
-  } */
+  .nearest-item-username {
+    align-self: center;
+    margin-left: 0.5rem;
+    color: #888;
+  }
 
   .nearest-item-distance {
     font-size: 1.2rem;
