@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <div class="menu-container" v-if="menu && hasToken">
+      <div class="menu-container" v-if="menu && isLoggedIn">
         <div class="menu-container__heading">
           <div class="menu-container__title" @click="menu = false">menu</div>
           <div class="menu-container__close-container">
@@ -94,7 +94,13 @@ export default {
   mixins: [checkToken],
   data() {
     return {
-      menu: false
+      menu: false,
+      isLoggedIn: false
+    }
+  },
+  created() {
+    if(localStorage.getItem('token')) {
+      this.isLoggedIn = true;
     }
   },
   methods: {
