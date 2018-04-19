@@ -146,7 +146,6 @@ export default {
     }
 
     .title-body-container {
-        background: lightgreen;
     }
 
     .text-body {
@@ -188,7 +187,7 @@ export default {
     }
 
     .wait-container {
-        position: absolute;
+        position: relative;
         max-width: 100vw;
         padding-top: 10rem;
     }
