@@ -1,18 +1,29 @@
 <template>
     <div class="text-container" v-if="text">
 
-        <div class="text-username" v-if="text"><username :id="text.user_id"></username></div>
-        <h2 class="text-title">{{ text.title }}</h2>
+        <transition name="wait">
+            <div class="wait-container" v-if="!distance">
+                <img class="wait-svg" src="../assets/img/wait.svg" alt="waiting for texts">
+                <div class="wait-text">waiting for location</div>
+            </div>
+        </transition>
 
-        <div class="text-body" v-if="distance && distance <= 15 || distance && distance == 0">{{ text.body }}</div>
+        <div v-if="distance">
+            <div class="text-distance">{{ distance }} m</div>
 
-        <div class="text-distance" v-if="latitude">{{ distance }} m</div>
+            <div class="text-username" v-if="text"><username :id="text.user_id"></username></div>
 
-        <div class="text-button-container" v-if="isUser">
-            <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
-                <div class="text-button text-update">update</div>
-            </router-link>
-            <div class="text-button text-delete" @click="doDelete()">delete</div>
+            <div class="title-body-container">
+                <h2 class="text-title">{{ text.title }}</h2>
+                <div class="text-body" v-if="distance <= 15 || distance == 0">{{ text.body }}</div>
+            </div>
+
+            <div class="text-button-container" v-if="isUser">
+                <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
+                    <div class="text-button text-update">update</div>
+                </router-link>
+                <div class="text-button text-delete" @click="doDelete()">delete</div>
+            </div>
         </div>
     </div>
 </template>
@@ -134,6 +145,10 @@ export default {
         font-size: 1.2rem;
     }
 
+    .title-body-container {
+        background: lightgreen;
+    }
+
     .text-body {
         margin-top: 2rem;
         font-size: 1.4rem;
@@ -171,4 +186,38 @@ export default {
         text-decoration: none;
         color: #474747;
     }
+
+    .wait-container {
+        position: absolute;
+        max-width: 100vw;
+        padding-top: 10rem;
+    }
+
+    .wait-enter-active {
+        transition: opacity .4s ease;
+    }
+
+    .wait-leave-active {
+        transition: opacity .4s ease;
+    }
+
+    .wait-enter, .wait-leave-to {
+        opacity: 0;
+    }
+
+    .wait-svg {
+        position: relative;
+        width: 30vw;
+        animation:spin 3s ease infinite;
+    }
+
+    .wait-text {
+        position: relative;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+
+    @-moz-keyframes spin { 40% { -moz-transform: rotate(180deg) scale(1.4, 1.4); } }
+    @-webkit-keyframes spin { 40% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); } }
+    @keyframes spin { 50% { -webkit-transform: rotate(180deg) scale(1.4, 1.4); transform: rotate(180deg) scale(1.4, 1.4); } }
 </style>
