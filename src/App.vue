@@ -102,7 +102,8 @@ export default {
     },
     doLogout: function() {
       localStorage.removeItem('token');
-      location.reload();
+      // location.reload();
+      router.push({name: 'Welcome'});
     },
     doReload: function() {
       // location.reload();
