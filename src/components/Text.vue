@@ -129,6 +129,13 @@ export default {
         font-size: 1.4rem;
     }
 
+    .text-distance {
+        margin-top: 4rem;
+        font-size: 4rem;
+        color: #ff5757;
+        font-weight: bold;
+    }
+
     .text-button-container {
         z-index: 10;
         width: 100vw;
