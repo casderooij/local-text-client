@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" @click="doFullScreen()">
     <div class="page-header">
       <div class="page-header__logo-container" @click="doReload()">
         <router-link :to="{name: 'Welcome'}">
@@ -96,12 +96,10 @@ export default {
       menu: false
     }
   },
-  created() {
-    // var element = document.getElementsByTagName("BODY")[0];
-    // element.requestFullscreen();
-    setTimeout(function() { document.body.requestFullscreen(); }, 100);
-  },
   methods: {
+    doFullScreen: function() {
+      document.getElementsByTagName('BODY')[0].webkitRequestFullscreen()
+    },
     doLogout: function() {
       localStorage.removeItem('token');
       location.reload();
