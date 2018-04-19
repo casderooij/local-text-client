@@ -97,7 +97,7 @@ export default {
     }
   },
   created() {
-    var element = document.getElementById('app');
+    var element = document.getElementsByTagName("BODY")[0];
     element.requestFullscreen();
   },
   methods: {
