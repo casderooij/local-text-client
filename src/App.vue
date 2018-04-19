@@ -98,7 +98,7 @@ export default {
   },
   methods: {
     doFullScreen: function() {
-      document.getElementsByTagName('BODY')[0].webkitRequestFullscreen()
+      document.getElementById('app').webkitRequestFullscreen()
     },
     doLogout: function() {
       localStorage.removeItem('token');
@@ -121,6 +121,12 @@ export default {
     margin: 0;
     padding: 0;
     max-width: 100vw;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
   }
 
   #app {
