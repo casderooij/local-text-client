@@ -96,6 +96,9 @@ export default {
       menu: false
     }
   },
+  created() {
+    element.requestFullscreen();
+  },
   methods: {
     doLogout: function() {
       localStorage.removeItem('token');
