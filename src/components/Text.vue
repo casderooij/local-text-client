@@ -4,7 +4,7 @@
 
         <div class="text-body">{{ text.body }}</div>
 
-        <div class="text-distance" v-if="latitude">{{ distance }}</div>
+        <div class="text-distance" v-if="latitude">{{ Math.floor(distance * 1000) }} m away</div>
 
         <div class="text-button-container" v-if="isUser">
             <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
@@ -51,7 +51,7 @@ export default {
                         ; 
                     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
                     var d = R * c; // Distance in km
-                    return d * 1000;
+                    return d;
                 }
 
                 function deg2rad(deg) {
