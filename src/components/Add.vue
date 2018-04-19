@@ -85,7 +85,10 @@ export default {
                     longitude: longitude
                 }
             })
-            .then(res => window.location.replace('https://local-text.nl'))
+            .then(res => {
+                // window.location.replace('https://local-text.nl')
+                router.push({name: 'Welcome'});
+            })
             .catch(err => console.log(err))
         }
     }
