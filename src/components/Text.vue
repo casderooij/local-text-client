@@ -1,8 +1,10 @@
 <template>
     <div class="text-container" v-if="text">
+
+        <div class="text-username" v-if="text"><username :id="text.user_id"></username></div>
         <h2 class="text-title">{{ text.title }}</h2>
 
-        <div class="text-body" v-if="distance && distance < 15">{{ text.body }}</div>
+        <div class="text-body" v-if="distance && distance <= 15 || distance && distance == 0">{{ text.body }}</div>
 
         <div class="text-distance" v-if="latitude">{{ distance }} m</div>
 
@@ -19,9 +21,11 @@
 import router from '../router'
 import axios from 'axios'
 import getLocation from '../assets/js/methods/getLocation'
+import username from './Username.vue';
 
 export default {
     name: 'Add',
+    components: {username},
     data() {
         return {
             id: '',
@@ -109,7 +113,6 @@ export default {
                 headers: {'token': JSON.parse(localStorage.getItem('token'))}
             })
             .then(response => {
-                // window.location.assign("https://local-text.nl")
                 router.push({name: 'Welcome'});
             })
             .catch(error => console.log(error));
@@ -122,6 +125,13 @@ export default {
     .text-container {
         padding: 0 2rem;
         text-align: center;
+    }
+
+    .text-username {
+        text-align: left;
+        padding-left: 2rem;
+        font-weight: bold;
+        font-size: 1.2rem;
     }
 
     .text-body {

@@ -1,8 +1,6 @@
 <template>
     <div class="add-container">
         <h2 class="add-title">add text</h2>
-        <h2>{{ latitude }} : {{ longitude }}</h2>
-        <h2>counter: {{ counter }}</h2>
 
         <transition name="wait">
             <div class="wait-container" v-if="!latitude">
