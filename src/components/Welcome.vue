@@ -17,7 +17,7 @@
           <router-link class="router-link" :to="{name: 'Text', params: {id: t.id}}">
             <div class="nearest-item-title">{{ t.title }}</div>
             <div class="nearest-item-distance"><div class="distance">{{ Math.floor(t.distance * 1000) }}</div> m away</div>
-            <username id="t.user_id"></username>
+            <username :id="t.user_id"></username>
             <div>{{ t.id }}</div>
           </router-link>
         </div>
@@ -29,10 +29,12 @@
 <script>
 import authMixin from '../assets/js/mixins/authMixin';
 import axios from 'axios';
+import username from './Username.vue';
 
 export default {
   name: 'Welcome',
   mixins: [authMixin],
+  components: {username},
   data () {
     return {
       text: null,
