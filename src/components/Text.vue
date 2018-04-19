@@ -2,7 +2,7 @@
     <div class="text-container" v-if="text">
         <h2 class="text-title">{{ text.title }}</h2>
 
-        <div class="text-body" v-if="distance > 15">{{ text.body }}</div>
+        <div class="text-body" v-if="distance && distance < 15">{{ text.body }}</div>
 
         <div class="text-distance" v-if="latitude">{{ distance }} m</div>
 
