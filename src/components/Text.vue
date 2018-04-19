@@ -4,7 +4,7 @@
 
         <div class="text-body">{{ text.body }}</div>
 
-        <div class="text-distance" v-if="distance">{{ distance }}</div>
+        <div class="text-distance" v-if="latitude">{{ distance }}</div>
 
         <div class="text-button-container" v-if="isUser">
             <router-link class="text-link" :to="{name: 'TextUpdate', params: {id: id}}">
@@ -51,7 +51,7 @@ export default {
                         ; 
                     var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
                     var d = R * c; // Distance in km
-                    return d;
+                    return d * 1000;
                 }
 
                 function deg2rad(deg) {
@@ -94,10 +94,8 @@ export default {
             this.text = response.data;
             let userId = JSON.parse(localStorage.getItem('token')).userId;
             if(parseInt(response.data.user_id) === parseInt(userId)) {
-                console.log('Same user');
                 this.isUser = true;
             } else {
-                console.log('not same user');
                 this.isUser = false;
             }
         })
@@ -123,6 +121,7 @@ export default {
 <style>
     .text-container {
         padding: 0 2rem;
+        text-align: center;
     }
 
     .text-body {
